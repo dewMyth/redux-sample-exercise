@@ -20,6 +20,7 @@
   "homepage": "https://github.com/dewMyth/redux-sample-exercise#readme",
   "dependencies": {
     "nodemon": "^2.0.20",
-    "redux": "^4.2.0"
+    "redux": "^4.2.0",
+    "redux-logger": "^3.0.6"
   }
 }

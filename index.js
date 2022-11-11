@@ -1,6 +1,11 @@
+// The 3rd party middleware - The logger who logs the process
+const reduxLogger = require("redux-logger");
+const logger = reduxLogger.createLogger();
+
 const redux = require("redux");
 const createStore = redux.createStore;
-const combineReducers = redux.combineReducers;
+const combineReducers = redux.combineReducers; // The combineReducer is use to combine multiple reducers into one -> rootReducer
+const applyMiddleware = redux.applyMiddleware; // applyMiddleware is used to apply the 3rd party middleware to the store
 
 // Defining Actions types
 const BUY_CAKE = "BUY_CAKE";
@@ -66,15 +71,14 @@ const rootReducer = combineReducers({
 });
 
 // Creating Store - The shop
-const store = createStore(rootReducer);
+const store = createStore(rootReducer, applyMiddleware(logger));
 
 // The rack/freezer of cakes before the customer comes
 console.log("Initial State --> ", store.getState());
 
 // Store is subscribing the rack of cakes
-const unsubscribe = store.subscribe(() =>
-  console.log("Updated State --> ", store.getState())
-);
+const unsubscribe = store.subscribe(() => {});
+//   console.log("Updated State --> ", store.getState())
 
 // Customer buys 1 cake
 store.dispatch(buyCake());
