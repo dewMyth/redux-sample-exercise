@@ -1,5 +1,6 @@
 const redux = require("redux");
 const createStore = redux.createStore;
+const combineReducers = redux.combineReducers;
 
 // Defining Actions types
 const BUY_CAKE = "BUY_CAKE";
@@ -12,6 +13,8 @@ function buyCake() {
     info: "Customer comes to buy a cake",
   };
 }
+
+// The Action Creator - The Customer who buys a icecream
 function buyIceCream() {
   return {
     type: BUY_ICECREAM,
@@ -20,13 +23,17 @@ function buyIceCream() {
 }
 
 // Defining Initial State - The rack of cakes before the customer comes
-const initialState = {
+const initialCakeState = {
   numOfCakes: 10,
+};
+
+// Defining Initial State - The freezer of iceCream before the customer comes
+const initialIceCreamsState = {
   numOfIceCreams: 20,
 };
 
 // Defining Reducer - The ShopKeeper who reduce the number of items from the rack
-const reducer = (state = initialState, action) => {
+const cakeReducer = (state = initialCakeState, action) => {
   switch (action.type) {
     // The Action in action - Customer buying the cake
     case BUY_CAKE:
@@ -34,6 +41,14 @@ const reducer = (state = initialState, action) => {
         ...state, // Make a copy of initial state - since we are not mutating the original state, instead we are copying it and mutate that copy
         numOfCakes: state.numOfCakes - 1,
       };
+
+    default:
+      return state;
+  }
+};
+
+const iceCreamReducer = (state = initialIceCreamsState, action) => {
+  switch (action.type) {
     case BUY_ICECREAM:
       return {
         ...state,
@@ -44,10 +59,16 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-// Creating Store - The shop
-const store = createStore(reducer);
+// Combining the reducers
+const rootReducer = combineReducers({
+  cake: cakeReducer,
+  iceCream: iceCreamReducer,
+});
 
-// The rack of cakes before the customer comes
+// Creating Store - The shop
+const store = createStore(rootReducer);
+
+// The rack/freezer of cakes before the customer comes
 console.log("Initial State --> ", store.getState());
 
 // Store is subscribing the rack of cakes
