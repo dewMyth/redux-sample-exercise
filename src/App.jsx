@@ -8,11 +8,14 @@ import CakeContainer from "./components/CakeContainer";
 import HooksCakeContainer from "./components/HooksCakeContainer";
 import IceCreamContainer from "./components/IceCreamContainer";
 import HooksBurgerContainer from "./components/HooksBurgerContainer";
+import UserContainer from "./async/UserContainer";
 
 function App() {
   return (
     <Provider store={store}>
       <div className="App">
+        <UserContainer />
+        <hr />
         <IceCreamContainer />
         <CakeContainer />
         <HooksCakeContainer />
