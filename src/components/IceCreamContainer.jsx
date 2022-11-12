@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import { buyIceCream } from "../redux";
 
 const IceCreamContainer = (props) => {
-  // console.log(props);
   return (
     <>
       <h1> Using Props</h1>
@@ -15,7 +14,6 @@ const IceCreamContainer = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
     numOfIceCreams: state.iceCream.numOfIceCreams,
   };
