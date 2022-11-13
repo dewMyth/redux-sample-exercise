@@ -1,13 +1,18 @@
 import { useState } from "react";
 // import "./App.css";
 
+import store from "./redux/store";
+import { Provider } from "react-redux";
+
 import Login from "./components/Login";
 
 function App() {
   return (
-    <div className="App">
-      <Login />
-    </div>
+    <Provider store={store}>
+      <div className="App">
+        <Login />
+      </div>
+    </Provider>
   );
 }
 
