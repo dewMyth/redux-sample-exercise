@@ -1,8 +1,14 @@
 import { useState } from "react";
-import "./App.css";
+// import "./App.css";
+
+import Login from "./components/Login";
 
 function App() {
-  return <h1>Hello World!</h1>;
+  return (
+    <div className="App">
+      <Login />
+    </div>
+  );
 }
 
 export default App;
