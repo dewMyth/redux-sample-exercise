@@ -1,7 +1,7 @@
 import { useState } from "react";
 // import "./App.css";
 
-import store from "./redux/store";
+import { store } from "./redux/store";
 import { Provider } from "react-redux";
 
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
